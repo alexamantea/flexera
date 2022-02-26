@@ -1,0 +1,46 @@
+_global processrequest << _proc(p_request_string)
+	  
+	  # in magik, rope is a stretchy indedex collection
+	  
+	  l_billboards_in_use << rope.new()
+	 
+	  l_rejects << 0
+		   
+	  # split_by returns an array 
+	  l_requests << p_request_string.split_by(",")
+
+	  _for a_request _over l_requests.fast_elements()
+	  _loop
+				_if l_billboards_in_use.includes?(a_request.as_number()) _then
+					
+			    	    l_rejects << l_rejects + 1
+				_else
+		                l_billboards_in_use.add(a_request.as_number())
+				_endif	
+	     _endloop
+
+		 _return l_rejects
+_endproc
+
+_global readrequests << _proc(p_file_path)
+       
+       # first open file with csv strings
+       # each line contains a sequence of requests
+
+	       l_file << external_text_input_stream.new(p_file_path)
+	     
+	       _loop
+				l_line << l_file.get_line()
+				_if l_line _is _unset _then _leave _endif
+				write("Processing request string:")
+				write(l_line)
+		   
+				l_rejects << processrequest(l_line)
+				write("Rejects: ", l_rejects)
+				write()
+	     
+			 
+	       _endloop
+	       
+	       l_file.close()
+_endproc
