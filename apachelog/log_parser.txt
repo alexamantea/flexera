@@ -1,0 +1,20 @@
+Assuming that it is a task that will not be performed often, as the description of the problem does not inform about that.
+
+1 - Bash script to process all the files inside the specified directory
+2 - Bash would decompress each tar.gz to a sub folder (working folder)
+3 - Once all the files are decompressed we can check for the user agents in each one of the apache log files.
+4 - I remember using awk when I worked with Linux based environments in the past. So I did a quick search on how to get the user agent from an Apache Log.
+    It would be something like:
+    awk -F\" '{print $6}' apache.log > output.txt <--- this is a step that would proccess data and produce output
+    
+    I ran the command above with a 1 GB log file and it took around 10 seconds to ouput the .txt with one User Agent per line.
+    The question description asks for a Summary, so this is not enough. Probably this is the time where it would be sensible to check awk documentation and see
+    if I could count the User Agents occurencies instead of outputting a big file and having to proccess it somewhere else.
+    
+Notes:
+    If this is a one time task I wouldn't bother too much with performance, however if this is something that was required to be efficient I would definitely 
+    try a different approach and use some specific tool (Elastic Search?).
+    
+    I believe bash script using awk would give a good start to this. It would work but again, pretty sure this is not the most efficient solution. 
+    
+ 
