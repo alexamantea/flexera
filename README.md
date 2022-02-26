@@ -1,5 +1,4 @@
-# flexera
-General
+# flexera - alexandre amantea
 For the coding questions, I used the language I am most familiar at the moment, been working with it for some time now.
 
 
