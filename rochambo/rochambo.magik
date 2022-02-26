@@ -6,8 +6,8 @@ _global getcounter << _proc(p_move1,p_move2)
     # probable next move. so i can counter using the map.
     
 	  l_counter_map << property_list.new_with(:|R|,"P",
-											  :|P|,"S",
-											  :|S|,"R")
+						  :|P|,"S",
+						  :|S|,"R")
 	l_moves << "RPS"
 	
 	_if p_move1 = p_move2 _then
@@ -47,8 +47,6 @@ _global processmoves << _proc(p_request_string,p_my_moves,p_move_map)
 				_endif
 					
 				_else
-					#write("opponent last 2 gestures = ", l_gestures[l_round-2]," ", l_gestures[l_round-1])
-					#last_two_moves << write_string(l_gestures[l_round-2], l_gestures[l_round-1])
 					counter_move << getcounter(l_gestures[l_round-2],l_gestures[l_round-1])
 					write("My counter play: ", counter_move, " : Oponent Play: ", a_gesture)
 					l_wins << l_wins + 1
@@ -65,14 +63,14 @@ _global readmoves << _proc(p_file_path)
        # each line contains a sequence of requests
 	  l_my_moves << {"R","R"}
 	  l_move_map << property_list.new_with(:|RR|,"Tie",
-											:|RS|, "R",
-											:|SR|, "R",
-											:|SP|, "S",
-											:|PS|, "S",
-											:|PR|, "P",
-											:|RP|, "P",
-											:|SS|,"Tie",
-											:|PP|,"Tie")
+						:|RS|, "R",
+						:|SR|, "R",
+						:|SP|, "S",
+						:|PS|, "S",
+						:|PR|, "P",
+						:|RP|, "P",
+						:|SS|,"Tie",
+						:|PP|,"Tie")
 											
 
 											  
