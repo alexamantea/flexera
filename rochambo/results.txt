@@ -1,0 +1,118 @@
+Processing moves string:
+P,S,R
+My play: R : Oponent Play: P Winner: P
+My play: R : Oponent Play: S Winner: R
+My counter play: P : Oponent Play: R
+Rounds won: 2
+Rounds lost: 1
+Rounds tied: 0
+
+Processing moves string:
+P,P,P
+My play: R : Oponent Play: P Winner: P
+My play: R : Oponent Play: P Winner: P
+My counter play: S : Oponent Play: P
+Rounds won: 1
+Rounds lost: 2
+Rounds tied: 0
+
+Processing moves string:
+R,R,R
+My play: R : Oponent Play: R Winner: Tie
+My play: R : Oponent Play: R Winner: Tie
+My counter play: P : Oponent Play: R
+Rounds won: 1
+Rounds lost: 0
+Rounds tied: 2
+
+Processing moves string:
+R,S,P
+My play: R : Oponent Play: R Winner: Tie
+My play: R : Oponent Play: S Winner: R
+My counter play: S : Oponent Play: P
+Rounds won: 2
+Rounds lost: 0
+Rounds tied: 1
+
+Processing moves string:
+S,R,P
+My play: R : Oponent Play: S Winner: R
+My play: R : Oponent Play: R Winner: Tie
+My counter play: S : Oponent Play: P
+Rounds won: 2
+Rounds lost: 0
+Rounds tied: 1
+
+Processing moves string:
+S,S,S
+My play: R : Oponent Play: S Winner: R
+My play: R : Oponent Play: S Winner: R
+My counter play: R : Oponent Play: S
+Rounds won: 3
+Rounds lost: 0
+Rounds tied: 0
+
+Processing moves string:
+S,P,R
+My play: R : Oponent Play: S Winner: R
+My play: R : Oponent Play: P Winner: P
+My counter play: P : Oponent Play: R
+Rounds won: 2
+Rounds lost: 1
+Rounds tied: 0
+
+Processing moves string:
+P,S
+My play: R : Oponent Play: P Winner: P
+My play: R : Oponent Play: S Winner: R
+Rounds won: 1
+Rounds lost: 1
+Rounds tied: 0
+
+Processing moves string:
+S,P
+My play: R : Oponent Play: S Winner: R
+My play: R : Oponent Play: P Winner: P
+Rounds won: 1
+Rounds lost: 1
+Rounds tied: 0
+
+Processing moves string:
+R,R
+My play: R : Oponent Play: R Winner: Tie
+My play: R : Oponent Play: R Winner: Tie
+Rounds won: 0
+Rounds lost: 0
+Rounds tied: 2
+
+Processing moves string:
+P,P
+My play: R : Oponent Play: P Winner: P
+My play: R : Oponent Play: P Winner: P
+Rounds won: 0
+Rounds lost: 2
+Rounds tied: 0
+
+Processing moves string:
+P,S
+My play: R : Oponent Play: P Winner: P
+My play: R : Oponent Play: S Winner: R
+Rounds won: 1
+Rounds lost: 1
+Rounds tied: 0
+
+Processing moves string:
+R,P
+My play: R : Oponent Play: R Winner: Tie
+My play: R : Oponent Play: P Winner: P
+Rounds won: 0
+Rounds lost: 1
+Rounds tied: 1
+
+Processing moves string:
+R,S
+My play: R : Oponent Play: R Winner: Tie
+My play: R : Oponent Play: S Winner: R
+Rounds won: 1
+Rounds lost: 0
+Rounds tied: 1
