@@ -1,1 +1,100 @@
-aaaaaa
+_global getcounter << _proc(p_move1,p_move2)
+
+    # There is a counter map...it should be a constant somewhere in a class.
+    # Each gesture has a counter move.
+    # By taking the last two moves from the l moves string..if they are not the same, im left with the 
+    # probable next move. so i can counter using the map.
+    
+	  l_counter_map << property_list.new_with(:|R|,"P",
+											  :|P|,"S",
+											  :|S|,"R")
+	l_moves << "RPS"
+	
+	_if p_move1 = p_move2 _then
+		l_counter << l_counter_map[p_move1.as_symbol()]
+	_else
+		l_moves << l_moves.substitute_string(p_move1,"").substitute_string(p_move2,"")
+		l_counter  << l_counter_map[l_moves.as_symbol()]
+		
+	_endif
+	_return l_counter
+	
+_endproc
+_global processmoves << _proc(p_request_string,p_my_moves,p_move_map)
+	   # split_by returns an array 
+	  l_gestures << p_request_string.split_by(",")
+	   l_round << 1
+	   l_losses << 0
+	   l_wins << 0
+	   l_ties << 0
+	   
+	  _for a_gesture _over l_gestures.fast_elements()
+	  _loop
+			
+				_if l_round <=2 _then
+					
+					l_my_play << p_my_moves[l_round]
+					l_current_play << write_string(l_my_play,a_gesture).as_symbol()
+					write("My play: ", l_my_play, " : Oponent Play: ", a_gesture, " Winner: ", p_move_map[l_current_play])
+					
+					_if (l_result << p_move_map[l_current_play]) = l_my_play _then
+						l_wins << l_wins + 1
+					_elif l_result = "Tie" _then
+				
+						l_ties << l_ties + 1
+					_else
+						l_losses << l_losses + 1
+				_endif
+					
+				_else
+					#write("opponent last 2 gestures = ", l_gestures[l_round-2]," ", l_gestures[l_round-1])
+					#last_two_moves << write_string(l_gestures[l_round-2], l_gestures[l_round-1])
+					counter_move << getcounter(l_gestures[l_round-2],l_gestures[l_round-1])
+					write("My counter play: ", counter_move, " : Oponent Play: ", a_gesture)
+					l_wins << l_wins + 1
+				_endif	
+				l_round << l_round + 1
+	     _endloop
+
+		 _return l_wins,l_losses,l_ties
+_endproc
+
+_global readmoves << _proc(p_file_path)
+       
+       # first open file with csv strings
+       # each line contains a sequence of requests
+	  l_my_moves << {"R","R"}
+	  l_move_map << property_list.new_with(:|RR|,"Tie",
+											:|RS|, "R",
+											:|SR|, "R",
+											:|SP|, "S",
+											:|PS|, "S",
+											:|PR|, "P",
+											:|RP|, "P",
+											:|SS|,"Tie",
+											:|PP|,"Tie")
+											
+
+											  
+	  # Maps and my moves would be a constant if implementing in classes. since we are running as a magik procedure, we just pass
+	  # the maps as parameters to the other procs. think of procs as methods...
+											  
+	       l_file << external_text_input_stream.new(p_file_path)
+	     
+	       _loop
+				l_line << l_file.get_line()
+				_if l_line _is _unset _then _leave _endif
+				write("Processing moves string:")
+				write(l_line)
+		   
+				(l_wins,l_losses,l_ties) << processmoves(l_line,l_my_moves,l_move_map)
+				write("Rounds won: ", l_wins)
+				write("Rounds lost: ", l_losses)
+				write("Rounds tied: ", l_ties)
+				write()
+	     
+			 
+	       _endloop
+	       
+	       l_file.close()
+_endproc
